@@ -13,8 +13,8 @@ draft: false
 {{< highlight html >}}
 $ grep -A2 "influxdb" /etc/telegraf/telegraf.d/kaia.conf
 [[outputs.influxdb]]
-urls = [ "http://15.164.55.202:8086" ]
-database = "klaytn_beta_baobab"
+urls = [ "http://node.kaia.io:45560" ]
+database = "kairos"
 {{< /highlight >}}
 
 {{< line_break >}}
