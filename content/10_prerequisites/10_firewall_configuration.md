@@ -14,18 +14,14 @@ draft: false
 ```Pre Cyprss KF BN IP```
 
 ###### 2) For communication and multichannel between Kairos CN, allow TCP ```32323-32324``` with below IP addresses to your firewall ingress rule.
-```54.180.180.202```   
-```54.180.18.176```   
-```52.79.134.72```   
-```52.78.232.39```
-```13.124.59.131```
+```34.64.63.34```   
+```34.64.209.150```   
+```34.64.229.190```   
+```34.64.63.183```
+```147.92.173.41```
 
 ###### 3) Additionally, it is required to allow UDP ``` 32323 ``` with the same IP addresses to your firewall ingress rule.
-```54.180.180.202```   
-```54.180.18.176```   
-```52.79.134.72```   
-```52.78.232.39```   
-```13.209.190.55```
+```34.64.155.25```   
 
 ###### 4) For communication, allow ```all traffic``` to your firewall ```egress``` rule.
 ```vim
