@@ -11,20 +11,27 @@ draft: false
 
 ###### 1) For CN,
 {{< highlight html >}}
-$ tar -C <your_kaia_home_path>/kcnd/data -xvf kaia-kairos-pruning-chaindata-20240819010812.tar.gz --exclude klay/chaindata/receipts
+$ tar --zstd -C <your_kaia_home_path>/kcnd/data -xvf kaia-kairos-pruning-chaindata-20260914010912.tar.zst --exclude klay/chaindata/receipts
 {{< /highlight >}}
 
 ###### 2) For PN,
 {{< highlight html >}}
-$ tar -C <your_kaia_home_path>/kpnd/data -xvf kaia-kairos-pruning-chaindata-20240819010812.tar.gz --exclude klay/chaindata/receipts
+$ tar --zstd -C <your_kaia_home_path>/kpnd/data -xvf kaia-kairos-pruning-chaindata-20260914010912.tar.zst --exclude klay/chaindata/receipts
 {{< /highlight >}}
 
-_** If you want to reduce the time for extracting, please refer this [pigz](https://zlib.net/pigz/) example._
+_** Snapshots are compressed with [zstd](https://github.com/facebook/zstd), so `tar` needs `--zstd`; `pigz` cannot open one. If your `tar` was built without `--zstd`, extract in two steps._
 {{< highlight html >}}
 (Amazon Linux 2) $ sudo amazon-linux-extras install epel
 (CentOS) $ sudo yum install epel-release -y
-$ sudo yum install pigz
-$ tar -I pigz -C <your_kaia_home_path>/k*nd/data -xvf kaia-kairos-pruning-chaindata-20240819010812.tar.gz --exclude klay/chaindata/receipts
+$ sudo yum install zstd
+$ zstd -d kaia-kairos-pruning-chaindata-20260914010912.tar.zst -o out.tar
+$ tar -C <your_kaia_home_path>/k*nd/data -xf out.tar --exclude klay/chaindata/receipts
+{{< /highlight >}}
+
+_** If the disk has no room for both the archive and the directory it expands into, download and extract in one pass instead of doing step A first._
+{{< highlight html >}}
+$ URL=`curl -s https://snapshots.node.kaia.io/kairos/pruning-chaindata/latest.txt`
+$ curl -s $URL | tar --zstd -C <your_kaia_home_path>/k*nd/data -xf - --exclude klay/chaindata/receipts
 {{< /highlight >}}
 
 {{< line_break >}}

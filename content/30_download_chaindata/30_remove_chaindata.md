@@ -11,7 +11,7 @@ draft: false
 
 ###### 1) For both CN and PN,
 {{< highlight html >}}
-$ rm kaia-kairos-chaindata-****************.tar.gz
+$ rm kaia-kairos-pruning-chaindata-****************.tar.zst
 {{< /highlight >}}
 
 {{< line_break >}}
